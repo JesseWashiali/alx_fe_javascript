@@ -89,10 +89,19 @@ function importFromJsonFile(event) {
     fileReader.readAsText(event.target.files[0]);
 }
 
-// Add event listeners
-document.getElementById('new-quote').addEventListener('click', newQuote);
-document.getElementById('export-quotes').addEventListener('click', exportQuotes);
+// Simulate server interaction using JSONPlaceholder
+const apiUrl = 'https://jsonplaceholder.typicode.com/quotes';
 
-// Initialize the app
-populateCategories();
-filterQuotes();
+// Function to fetch quotes from server
+function fetchQuotesFromServer() {
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const serverQuotes = data;
+            syncQuotesWithServer(serverQuotes);
+        })
+        .catch(error => console.error('Error fetching quotes from server:', error));
+}
+
+// Function to sync quotes with server
+function sync
