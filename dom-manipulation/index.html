@@ -25,6 +25,10 @@
         <button id="export-quotes">Export Quotes</button>
         <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)">
         <label for="importFile">Import Quotes</label>
+        <select id="categoryFilter" onchange="filterQuotes()">
+            <option value="all">All Categories</option>
+            <!-- Dynamically populated categories -->
+        </select>
     </div>
 
     <script src="script.js"></script>
